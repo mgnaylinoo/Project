@@ -1,0 +1,59 @@
+body{
+	font-family:Cambria;
+}
+.slider-image{
+height: 600px;
+}
+.header2{
+color:red;
+}
+#intro-img{
+	height: 250px;
+}
+.content-card{
+	margin-top: 20px;
+
+}
+.card-title{
+	text-align: center;
+	color: #a03037;
+}
+.card-btn{
+	display: inline-block;
+	width: 100px;
+	height:35px;
+	background-color: #a03037;
+	color: white;
+	padding:5px;
+	text-decoration: none;
+	text-align: center;
+}
+.card-btn:hover{
+	background-color: black;
+	color: white;
+}
+.bt-group{
+	text-align: right;
+}
+#cityTitle{
+	color: #a03037;
+
+}
+#content{
+	background-color: #efefef;
+	margin-top: 50px;
+}
+.footer {
+	background-color:yellow;
+	color:black;
+}
+
+.footer p{
+	height: 50px;
+	line-height: 50px;
+}
+.img_fit{
+	width: 500px;
+	height: 400px;
+}
+

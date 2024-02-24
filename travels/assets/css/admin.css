@@ -1,0 +1,21 @@
+body{
+	font-family: Cambria;
+}
+#sidebar{
+	background-color: black;
+	color: white;
+	min-height: 1000px;
+	
+}
+.sider-list{
+		list-style-type: none;
+
+}
+.sider-list li{
+	padding: 15px;
+	border-bottom: 1px solid white;
+}
+.sider-list li a{
+	color: white;
+	text-decoration: none;
+}
