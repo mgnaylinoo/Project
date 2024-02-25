@@ -32,6 +32,13 @@
 	if(isset($_GET['action'])){
 		if($_GET['action']=="logout"){
 			unset($_SESSION["auth"]);
+			unset($_SESSION['status']);
+			unset($_SESSION["username"]);
+			unset($_SESSION['email']);
+			unset($_SESSION["password"]);
+			unset($_SESSION['title']);
+			unset($_SESSION['description']);
+			unset($_SESSION['image']);
 		}
 		header("Location: ../index.php");
 	}

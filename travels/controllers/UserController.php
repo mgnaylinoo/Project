@@ -39,8 +39,9 @@ if(isset($_POST['username'])){
 
 
 		}else if($_POST['action']=="update"){
+			$res = password_hash($password,PASSWORD_BCRYPT);
 			$userid = $_POST['userId'];
-			$status = $user->update($name, $email, $password, $userid);
+			$status = $user->update($name, $email, $res, $userid);
 
 			if($status){
 				
