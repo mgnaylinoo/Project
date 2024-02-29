@@ -13,16 +13,18 @@ if(isset($_POST['username'])){
 	$email=$_POST['email'];
 	$password=$_POST['password'];
 
-	if($name == "" | $email =="" | $password ==""){
+	if($name == "" | $email =="" | $password =="" | strlen($password)<8){
 		if($name == ""){
 			$_SESSION["username"]="Username must not be empty!";
 		}
 		if($email == ""){
 			$_SESSION["email"]="Email must not be empty!";
 		}
-		if($password == ""){
-			$_SESSION["password"]="Password must not be empty!";
+		if($password == "" | strlen($password)<8){
+			$_SESSION["password"]="Password must at least 8 character!";
 		}
+		 $_SESSION['expire']=time();
+		
 		header("Location:".$_SERVER['HTTP_REFERER']);
 	}else{
 		unset($_SESSION['username']);
@@ -30,8 +32,7 @@ if(isset($_POST['username'])){
 		unset($_SESSION['password']);
 
 		if($_POST['action'] == "add"){
-			$res = password_hash($password,PASSWORD_BCRYPT);
-			$user->create($name,$email,$res);
+			$user->create($name,$email,$password);
 
 			 $_SESSION['status'] = "User created sucessfully.";
 			 $_SESSION['expire']=time();
@@ -39,9 +40,8 @@ if(isset($_POST['username'])){
 
 
 		}else if($_POST['action']=="update"){
-			$res = password_hash($password,PASSWORD_BCRYPT);
 			$userid = $_POST['userId'];
-			$status = $user->update($name, $email, $res, $userid);
+			$status = $user->update($name, $email, $password, $userid);
 
 			if($status){
 				

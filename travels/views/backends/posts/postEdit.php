@@ -41,6 +41,26 @@ enctype="multipart/form-data">
     }
   ?>
 
+  <div class="row mt-3">
+    <label for="location" class="col-md-4 text-white">Location</label>
+    <div class="col-md-8">
+        <select class="form-select" name="location">
+          <option value=""></option>
+          <option value="mandalay">Mandalay</option>
+          <option value="naypyihtaw">Nay Pyi Htaw</option>
+          <option value="yangon">Yangon</option>
+          <option value="mawlamyine">Mawlamyine</option>
+        </select>
+    </div>
+    </div>
+    <?php
+    if(isset($_SESSION["location"])){
+    ?>
+    <p class="text-danger offset-4">
+    <?php  echo $_SESSION['location'];
+    }
+    ?>
+
   <div class="row mt-3" >
     <label for="description" class="col-md-4 text-white">Description</label>
     <div class="col-md-8">

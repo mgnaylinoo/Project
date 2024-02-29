@@ -67,5 +67,20 @@ class User{
 
 		}
 	}
+	public function mustone(){
+		try{
+			$status = $this->conn->prepare("SELECT count(*) FROM users");
+			$status->execute();
+			$number_of_rows = $status->fetchColumn();
+			if($number_of_rows>1){
+				return true;
+			}else{
+				return false;
+			}
+
+		}catch(Exception $e){
+
+		}
+	}
 }
  ?>

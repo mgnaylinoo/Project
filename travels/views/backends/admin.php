@@ -6,7 +6,6 @@
   include "../../app/Post.php";
 
   session_start();
-
     //db connection
     $db=new DB();
     $connection =$db->connect();
@@ -33,10 +32,17 @@
 
     }elseif($page=="delete"){
        $userId = $_GET['id'];
-       $user->delete($userId);
+       if($user->mustone()){
+        $user->delete($userId);
        $_SESSION['expire']=time();
        $_SESSION['status'] = "User Deleted successufully.";
        header("Location:".$_SERVER['HTTP_REFERER']);
+     }else{
+      $_SESSION['expire']=time();
+       $_SESSION['status'] = "One admin require.";
+       header("Location:".$_SERVER['HTTP_REFERER']);
+     }
+       
     }elseif($page=="post_delete"){
       $postId = $_GET['id'];
       $postDB->delete($postId);
@@ -53,8 +59,13 @@
       $postId=$_GET['id'];
       $post=$postDB->getPostById($postId);
       include "posts/postEdit.php";
+    }elseif($page=='add_hotel'){
+      include "nearby/add_hotel.php";
+     }
+     elseif($page=='add_restaurant'){
+      include "nearby/add_restaurant.php";
+     }
     }
-  }
  ?>
 
 

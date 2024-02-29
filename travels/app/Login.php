@@ -14,7 +14,7 @@
 				if($result==""){
 					$_SESSION['email'] = "Wrong Email.";
 				}else{
-					if(password_verify($password, $result["password"])){
+					if($password==$result["password"]){
 						$_SESSION["auth"] = true;
 					}else{
 						$_SESSION['password'] = "Wrong password";

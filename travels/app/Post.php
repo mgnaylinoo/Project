@@ -5,13 +5,14 @@
 				$this->conn=$connection;
 		}
 
-		public function create($title,$description,$image){
+		public function create($title,$description,$location,$image){
 			try{
 
-					$status=$this->conn->prepare("INSERT INTO posts (title,description,image) VALUES (:title,:description,:image)");
+					$status=$this->conn->prepare("INSERT INTO posts (title,description,location,image) VALUES (:title,:description,:location,:image)");
 
 					$status->bindParam("title",$title);
 					$status->bindParam("description",$description);
+					$status->bindParam("location",$location);
 					$status->bindParam("image",$image);
 					$status->execute();
 					return true;
@@ -46,13 +47,14 @@
 
 		}
 	}
-
-	public function update($title, $description,$image, $id){
+	public function update($title, $description,$location,$image, $id){
 		try{
-			$status = $this->conn->prepare("UPDATE posts SET title=:title, description=:description, image=:image WHERE id=:id");
+			$status = $this->conn->prepare("UPDATE posts SET title=:title, description=:description,
+			location=:location, image=:image WHERE id=:id");
 
 			$status->bindParam(":title", $title);
 			$status->bindParam(":description", $description);
+			$status->bindParam(":location", $location);
 			$status->bindParam(":image", $image);
 			$status->bindParam(":id",$id);
 			$status->execute();

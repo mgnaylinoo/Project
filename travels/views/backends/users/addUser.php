@@ -4,7 +4,7 @@
 
  	<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
 		    <li class="breadcrumb-item active" aria-current="page">New User</li>
 		  </ol>
 	</nav>
@@ -20,6 +20,9 @@
       if($diff>2){
         unset($_SESSION['status']);
         unset($_SESSION['expire']);
+        unset($_SESSION['username']);
+        unset($_SESSION['email']);
+        unset($_SESSION['password']);
       }
     }
 
@@ -64,7 +67,7 @@
   	<div class="row mt-3">
     <label for="password" class="col-md-4 text-white">Password</label>
     <div class="col-md-8">
-    <input type="password" name="password" class="form-control " id="password"placeholder="*****">
+    <input type="password" name="password" class="form-control " id="password"placeholder="*********">
     </div>
     <?php
     if(isset($_SESSION["password"])){

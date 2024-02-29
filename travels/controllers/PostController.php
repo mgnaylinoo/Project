@@ -9,24 +9,30 @@ $postDB=new Post($connection);
 	if(isset($_POST["title"])){
 		$title=$_POST['title'];
 		$description=$_POST["description"];
+		$location=$_POST["location"];
 		$imageName=$_FILES['image']['name'];
 
-		if($title==""| $description==""| $imageName==""){
+		if($title==""| $description==""| $imageName=="" | $location==""){
 			if($title==""){
 				$_SESSION["title"]="Title Must Not Be Empty";
 			}
 				if($description==""){
 				$_SESSION["description"]="Description Must Not Be Empty";
 			}
+			if($location==""){
+				$_SESSION["location"]="Location Must Not Be Empty";
+			}
 			if($imageName==""){
 				$_SESSION["image"]="image Must Not Be Empty";
 			}
+			$_SESSION['expire']=time();
 			header("Location:".$_SERVER["HTTP_REFERER"]);
 			
 
 		}else{
 			unset($_SESSION['title']);
 			unset($_SESSION['description']);
+			unset($_SESSION['location']);
 			unset($_SESSION['image']);
 			$tmp_name=$_FILES['image']['tmp_name'];
 
@@ -38,7 +44,7 @@ $postDB=new Post($connection);
 				$action =$_POST["action"];
 
 			if($action=="add"){
-					$status=$postDB->create($title,$description,$saveImageName);
+					$status=$postDB->create($title,$description,$location,$saveImageName);
 			if($status){
 				$_SESSION["status"]="Created Successfully";
 			}else{
@@ -48,20 +54,6 @@ $postDB=new Post($connection);
 			$_SESSION['expire']=time();
 			header("Location:".$_SERVER["HTTP_REFERER"]);
 
-			}else if($action=="updatePost"){
-				$postId=$_POST['postId'];
-
-				$status=$postDB->update($title,$description,$saveImageName,$postId);
-
-				if($status){
-				
-				$_SESSION["status"]="Post Updated Successfully";
-			}else{
-				$_SESSION["status"]="Something went wrong";
-			}
-
-			$_SESSION['expire']=time();
-			header("Location: ../views/backends/admin.php?page=posts");
 			}
 		}
 	}

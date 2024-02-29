@@ -4,7 +4,7 @@
 
  	<nav aria-label="breadcrumb">
 		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
+		    <li class="breadcrumb-item"><a href="../../index.php">Home</a></li>
 		    <li class="breadcrumb-item active" aria-current="page">New Post</li>
 		  </ol>
 	</nav>
@@ -20,9 +20,13 @@ enctype="multipart/form-data">
   //to show successful comment
     if(isset($_SESSION['expire'])){
       $diff=time()-$_SESSION['expire'];
-      if($diff>0.2){
+      if($diff>0.1){
         unset($_SESSION['status']);
         unset($_SESSION['expire']);
+        unset($_SESSION['title']);
+        unset($_SESSION['description']);
+        unset($_SESSION['location']);
+        unset($_SESSION['image']);
       }
     }
 
@@ -40,14 +44,36 @@ enctype="multipart/form-data">
     <div class="col-md-8">
     <input type="text" name="title" class="form-control " id="title" placeholder="Post Title">
     </div>
-  </div>
-  <?php
+    </div>
+    <?php
     if(isset($_SESSION["title"])){
     ?>
     <p class="text-danger offset-4">
     <?php  echo $_SESSION['title'];
+      }
+    ?>
+    <div class="row mt-3">
+    <label for="location" class="col-md-4 text-white">Location</label>
+    <div class="col-md-8">
+        <select class="form-select" name="location">
+          <option value=""></option>
+          <option value="mandalay">Mandalay</option>
+          <option value="naypyihtaw">Nay Pyi Htaw</option>
+          <option value="yangon">Yangon</option>
+          <option value="mawlamyine">Mawlamyine</option>
+        </select>
+    </div>
+    </div>
+    <?php
+    if(isset($_SESSION["location"])){
+    ?>
+    <p class="text-danger offset-4">
+    <?php  echo $_SESSION['location'];
     }
-  ?>
+    ?>
+  
+
+
 
   <div class="row mt-3" >
     <label for="description" class="col-md-4 text-white">Description</label>
