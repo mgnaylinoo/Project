@@ -1,22 +1,10 @@
-
-
- 	<div class="col-md-9">
-
- 	<nav aria-label="breadcrumb">
-		  <ol class="breadcrumb">
-		    <li class="breadcrumb-item"><a href="#">Home</a></li>
-		    <li class="breadcrumb-item active" aria-current="page">Add Hotel</li>
-		  </ol>
-	</nav>
-
- 
-<div class="col-md-6 offset-md-3 bg-dark mt-5 p-5">
-
-
-<form class="row g-3 pt-5" action="../../controllers/HotelController.php" method="post" 
-enctype="multipart/form-data">
-
-  <?php 
+<div class="col-md-9" style="position: relative;">
+    <div class="row overflow-div">
+      <div style="margin-left:80px ;">
+        <h2 class="pt-4 text-white"><i class="fa-solid fa-hotel" style="margin-right:12px"></i>Add Hotel</h2>
+      </div>
+    </div>
+     <?php 
   //to show successful comment
     if(isset($_SESSION['expire'])){
       $diff=time()-$_SESSION['expire'];
@@ -31,6 +19,15 @@ enctype="multipart/form-data">
         unset($_SESSION['hotel_image']);
       }
     }
+    ?>
+    <form class="row g-3 pt-5 underneath-div" action="../../controllers/HotelController.php" method="post" 
+enctype="multipart/form-data">
+
+   <div class="card" style="width: 50rem;">
+      <div class="card-body">
+ 
+
+    <?php
 
     if(isset($_SESSION["status"])){
   ?>
@@ -40,66 +37,63 @@ enctype="multipart/form-data">
     <?php
   }
    ?>
-  <h2 class="text-white"><i class="fa-solid fa-plus"></i>Add Hotel</h2>
-  	<div class="row mt-5">
-    <label for="hName" class="col-md-4 text-white">Hotel Name</label>
-    <div class="col-md-8">
-    <input type="text" name="hName" class="form-control " id="hName" placeholder="Please Enter Hotel name">
-    </div>
-  </div>
-  <?php
-    if(isset($_SESSION["name"])){
+    <div class="row">
+      <div class="col-md-6">
+      <label for="hName">Hotel Name</label>
+      <input type="text" name="hName" class="form-control " id="hName" placeholder="Please Enter Hotel name">
+    <?php
+      if(isset($_SESSION["name"])){
+      ?>
+      <p class="text-danger">
+      <?php  echo $_SESSION['name'];
+      }
     ?>
-    <p class="text-danger offset-4">
-    <?php  echo $_SESSION['name'];
-    }
-  ?>
-
-    <div class="row mt-3">
-    <label for="mHPrice" class="col-md-4 text-white">Minimum Price</label>
-    <div class="col-md-8">
-    <input type="text" name="mHPrice" class="form-control " id="mHPrice" placeholder="Please Enter Minimum Price ">
+    </p>
     </div>
-  </div>
-  <?php
-    if(isset($_SESSION["price"])){
+    <div class="col-md-6">
+      <label for="mHPrice">Minimum Price</label>
+      <input type="text" name="mHPrice" class="form-control " id="mHPrice" placeholder="Please Enter Minimum Price ">
+    <?php
+      if(isset($_SESSION["price"])){
+      ?>
+      <p class="text-danger">
+      <?php  echo $_SESSION['price'];
+      }
     ?>
-    <p class="text-danger offset-4">
-    <?php  echo $_SESSION['price'];
-    }
-  ?>
+      </p>
+  </div>
+  </div>
 
    <div class="row mt-3">
-    <label for="hPhoneNo" class="col-md-4 text-white">Phone Number</label>
-    <div class="col-md-8">
+    <div class="col-md-6">
+    <label for="hPhoneNo">Phone Number</label>
     <input type="text" name="hPhoneNo" class="form-control " id="hPhoneNo" placeholder="Please enter phone number">
-    </div>
-  </div>
   <?php
     if(isset($_SESSION["phone"])){
     ?>
-    <p class="text-danger offset-4">
+    <p class="text-danger">
     <?php  echo $_SESSION['phone'];
     }
   ?>
-
-   <div class="row mt-3">
-    <label for="hEmail" class="col-md-4 text-white">Contact Email</label>
-    <div class="col-md-8">
-    <input type="text" name="hEmail" class="form-control " id="hEmail" placeholder="Please enter Contact Email">
-    </div>
+    </p>
   </div>
+   <div class="col-md-6">
+    <label for="hEmail">Contact Email</label>
+    <input type="text" name="hEmail" class="form-control " id="hEmail" placeholder="Please enter Contact Email">
   <?php
     if(isset($_SESSION["hotel_email"])){
     ?>
-    <p class="text-danger offset-4">
+    <p class="text-danger">
     <?php  echo $_SESSION['hotel_email'];
     }
   ?>
+    </p>
+  </div>
+</div>
 
 <div class="row mt-3">
-    <label for="location" class="col-md-4 text-white">Location</label>
-    <div class="col-md-8">
+  <div class="col-md-6">
+    <label for="location" >Location</label>
         <select class="form-select" name="hLocation">
           <option value=""></option>
           <option value="mandalay">Mandalay</option>
@@ -107,42 +101,37 @@ enctype="multipart/form-data">
           <option value="yangon">Yangon</option>
           <option value="mawlamyine">Mawlamyine</option>
         </select>
-    </div>
-    </div>
     <?php
-    if(isset($_SESSION["location"])){
+    if(isset($_SESSION["hotel_location"])){
     ?>
-    <p class="text-danger offset-4">
-    <?php  echo $_SESSION['location'];
+    <p class="text-danger">
+    <?php  echo $_SESSION['hotel_location'];
     }
     ?>
-
- 
-
-   
-
-
-  	<div class="row mt-3">
-    <label for="image" class="col-md-4 text-white">Image</label>
-    <div class="col-md-8">
-
+  </p>
+  </div>
+    <div class="col-md-6">
+    <label for="image">Image</label>
     <input type="file" name="image" class="form-control " id="image" >
-    </div>
     <?php
     if(isset($_SESSION["hotel_image"])){
     ?>
-    <p class="text-danger offset-4">
+    <p class="text-danger">
     <?php  echo $_SESSION["hotel_image"];
     }
   ?>
+  </p>
   </div>
+</div>
   <input type="hidden" name="action" value="add">
 
     
   <div class="text-center">
     <button type="submit" class="btn btn-success" name="hotel"><i class="fa-solid fa-circle-plus"></i>Save</button>
-    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-eraser"></i>Reset</button>
+    <button type="reset" class="btn btn-danger"><i class="fa-solid fa-eraser"></i>Clear</button>
   </div>
 </form>
+
+</div>
 </div>
 </div>

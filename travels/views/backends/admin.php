@@ -65,6 +65,9 @@
      elseif($page=='add_restaurant'){
       include "nearby/add_restaurant.php";
      }
+     elseif($page=='add_taxi'){
+      include "nearby/add_taxi.php";
+     }
     }
  ?>
 

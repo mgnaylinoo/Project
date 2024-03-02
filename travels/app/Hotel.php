@@ -50,36 +50,6 @@
 		}
 	}
 
-	public function update($name,$price,$phone,$email,$location,$image){
-		try{
-			$status = $this->conn->prepare("UPDATE hotel SET name=:name, price=:price, phone=:phone, email=:email,
-			location=:location, image=:image WHERE id=:id");
-
-			$status->bindParam(":name",$name);
-			$status->bindParam(":price",$price);
-			$status->bindParam(":phone",$phone);
-			$status->bindParam(":email",$email);
-			$status->bindParam(":location",$location);
-			$status->bindParam(":image",$image);
-			$status->bindParam(":id",$id);
-			$status->execute();
-			return true;
-
-		}catch(Exception $e){
-			return false;
-		}
-	}
-	public function delete($id){
-		try{
-				$status=$this->conn->prepare("DELETE from hotel where id=:id");
-				$status->bindParam(":id",$id);
-				$status->execute();
-				return true;
-		}catch(Exception $e){
-
-		}
-	}
-
 
 
 

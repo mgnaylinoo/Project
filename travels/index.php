@@ -1,10 +1,12 @@
-<?php 
+
+	<?php 
 		include "./views/frontends/header.php";
 		include "./views/frontends/navbar.php";
 		include "./app/Post.php";
 		include "./app/DB.php";
 		include "./app/Hotel.php";
 		include "./app/Restaurant.php";
+		include "./app/Taxi.php";
 
 		$db = new DB();
 		$connection = $db->connect();
@@ -18,6 +20,8 @@
 		$restaurantObj = new Restaurant($connection);
 		$restaurants = $restaurantObj->getAll();
 
+		$taxiObj = new Taxi($connection);
+		$taxis = $taxiObj->getAll();
 
 		
 		if(isset($_GET['page'])){

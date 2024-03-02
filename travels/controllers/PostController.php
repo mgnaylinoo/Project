@@ -55,6 +55,19 @@ $postDB=new Post($connection);
 			header("Location:".$_SERVER["HTTP_REFERER"]);
 
 			}
+			else if($action=="updatePost"){
+			$userid = $_POST['postId'];
+			$status = $postDB->update($title,$description,$location,$saveImageName,$userid);
+
+			if($status){
+				
+				$_SESSION['status'] = "Post updated successufully.";
+			}else{
+				$_SESSION['status'] = "Something went wrong.";
+			}
+				$_SESSION['expire']=time();
+			header("Location:".$_SERVER["HTTP_REFERER"]);
+		}
 		}
 	}
 ?>

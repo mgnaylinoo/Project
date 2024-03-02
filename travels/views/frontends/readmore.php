@@ -118,7 +118,7 @@
                           <img style="height: 250px;" src="./assets/posts/<?php echo $hotel['image'];?>">
                           <div class="card-body">
                             <h5 class="card-title"><?php echo $hotel['name'];?></h5>
-                            Min price:<?php echo $hotel['price'];?><br>
+                            Min price:<?php echo $hotel['price'];?>  MMK<br>
                             phone:<?php echo $hotel['phone'];?><br>
                             Location:<?php echo $hotel['location'];?><br>
                           </div>
@@ -144,7 +144,7 @@
                           <img style="height: 250px;" src="./assets/posts/<?php echo $restaurant['image'];?>">
                           <div class="card-body">
                             <h5 class="card-title"><?php echo $restaurant['name'];?></h5>
-                            Min price:<?php echo $restaurant['price'];?><br>
+                            Min price:<?php echo $restaurant['price'];?>  MMK<br>
                             phone:<?php echo $restaurant['phone'];?><br>
                             Location:<?php echo $restaurant['location'];?><br>
                           </div>
@@ -157,16 +157,31 @@
                 </div>
               </div>   
 
-              <div id="Taxi" class="tabcontent">
-                <h3>Taxi</h3>
-                <p>Tokyo is the capital of Japan.</p>
-                <div class="card" style="width: 18rem;height: 10rem;">
-                  <img src="./assets/posts/<?php echo $post['image'];?>" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div>
+             <div id="Taxi" class="tabcontent">
+                <h3>Taxis</h3>
+                <div class="container-fluid" id="postcontents">
+                <div class="row">
+                <?php foreach($taxis as $taxi){ 
+                  if($post['location'] == $taxi['location']){
+                  ?>
+
+                    <div class="col-md-3 content-card">
+                        <div class="card">
+                          <img style="height: 250px;" src="./assets/posts/<?php echo $taxi['image'];?>">
+                          <div class="card-body">
+                            <h5 class="card-title"><?php echo $taxi['name'];?></h5>
+                            Min price:<?php echo $taxi['price'];?><br>
+                            phone:<?php echo $taxi['phone'];?><br>
+                            Location:<?php echo $taxi['location'];?><br>
+                          </div>
+                        </div>
+                    </div>
+                <?php 
+                  }
+                }?>   
                 </div>
-              </div>
+                </div>
+              </div> 
       </div>
     
 
